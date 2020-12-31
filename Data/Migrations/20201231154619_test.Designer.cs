@@ -4,14 +4,16 @@ using Eventchain.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eventchain.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201231154619_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,23 +102,13 @@ namespace Eventchain.Data.Migrations
                     b.Property<string>("EventDetails")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EventId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("EventName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TicketId")
-                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("EventId");
-
-                    b.HasIndex("EventId1");
-
-                    b.HasIndex("TicketId");
 
                     b.HasIndex("UserId");
 
@@ -130,10 +122,15 @@ namespace Eventchain.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("TicketId");
+
+                    b.HasIndex("EventId");
 
                     b.ToTable("Tickets");
                 });
@@ -275,17 +272,18 @@ namespace Eventchain.Data.Migrations
 
             modelBuilder.Entity("Eventchain.Models.Event", b =>
                 {
-                    b.HasOne("Eventchain.Models.Event", null)
-                        .WithMany("Tickets")
-                        .HasForeignKey("EventId1");
-
-                    b.HasOne("Eventchain.Models.Ticket", null)
-                        .WithMany("SubEvents")
-                        .HasForeignKey("TicketId");
-
                     b.HasOne("Eventchain.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Eventchain.Models.Ticket", b =>
+                {
+                    b.HasOne("Eventchain.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -24,8 +24,30 @@ namespace Eventchain.Controllers
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+        [AllowAnonymous]
+        public async Task<IActionResult> PublicIndex()
+        {
+            //return View(await _context.Clubs.ToListAsync());
+            return View(await _context.Events.ToListAsync());
+        }
+        [AllowAnonymous]
+        public async Task<IActionResult> PublicDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        // GET: Events
+            var secret = await _context.Events.FirstOrDefaultAsync(m => m.EventId == id);
+            if (secret == null)
+            {
+                return NotFound();
+            }
+
+            return View(secret);
+        }
+
+        // GET: Events for Logged in User (User Specfifc)
         public async Task<IActionResult> Index()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // UserId currently logged in

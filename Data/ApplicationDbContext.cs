@@ -9,10 +9,14 @@ namespace Eventchain.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        
+        public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Event> Events { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        
     }
 }

@@ -222,3 +222,5 @@ C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcore
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\Details.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\Edit.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\PrivacyError.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\PublicIndex.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\PublicDetails.cshtml.g.cs
