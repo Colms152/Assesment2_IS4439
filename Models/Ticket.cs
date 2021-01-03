@@ -12,10 +12,10 @@ namespace Eventchain.Models
         public int TicketId { get; set; }
         public string Title { get; set; }
 
-        //public int EventId { get; set; }
-        //public Event Event { get; set; }
+        public int EventId { get; set; }
+        public Event Event { get; set; }
 
-        public List<Event> SubEvents { get; set; }
+        //public List<Event> SubEvents { get; set; }
 
     }
 }

@@ -224,3 +224,8 @@ C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcore
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\PrivacyError.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\PublicIndex.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Events\PublicDetails.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Create.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Delete.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Details.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Edit.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\Index.cshtml.g.cs
