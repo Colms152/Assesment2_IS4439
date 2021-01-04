@@ -187,11 +187,6 @@ C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Tickets\Create.cshtml.g.cs
-C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Tickets\Delete.cshtml.g.cs
-C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Tickets\Details.cshtml.g.cs
-C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Tickets\Edit.cshtml.g.cs
-C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Tickets\Index.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Eventchain.RazorTargetAssemblyInfo.cache

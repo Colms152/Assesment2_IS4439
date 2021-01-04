@@ -19,14 +19,7 @@ namespace Eventchain.Models
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        //For many to many relationships in objects -> List of each other in both - Events have many tickets, A ticket can have many events
-        //***************
-
-
-        //One to many relatioship - One Ticket has one Event but Events can have many events
-        public List<Ticket> Tickets { get; set; }
-
-
+        //For many to many relationships in objects -> List of each other in both - Events can have many venues, An venue can host many events
         public List<Venue> Venues { get; set; }
 
     }

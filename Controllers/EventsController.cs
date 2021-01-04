@@ -147,13 +147,14 @@ namespace Eventchain.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDetails,UserId,VenueId")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDetails,UserId,Venues")] Event @event)
         {
             if (id != @event.EventId)
             {
                 return NotFound();
             }
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // UserId currently logged in
+            @event.UserId = userId;
             if (ModelState.IsValid)
             {
                 try
