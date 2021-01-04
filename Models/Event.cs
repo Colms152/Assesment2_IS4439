@@ -26,5 +26,8 @@ namespace Eventchain.Models
         //One to many relatioship - One Ticket has one Event but Events can have many events
         public List<Ticket> Tickets { get; set; }
 
+
+        public List<Venue> Venues { get; set; }
+
     }
 }

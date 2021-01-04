@@ -66,7 +66,14 @@ namespace Eventchain.Controllers
 
             var secret = await _context.Events
                 .Include(s => s.User)
+                .Include(c => c.Venues)
                 .FirstOrDefaultAsync(m => m.EventId == id);
+            /*
+            if (secret.Venues == null)
+            {
+                return Content("This event has no venues");
+            }
+            */
             if (secret == null)
             {
                 return NotFound();
@@ -85,6 +92,7 @@ namespace Eventchain.Controllers
         public IActionResult Create()
         {
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueId");
             return View();
         }
 
@@ -93,7 +101,7 @@ namespace Eventchain.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventId,EventName,EventDetails")] Event @event)
+        public async Task<IActionResult> Create([Bind("EventId,EventName,EventDetails,VenueId")] Event @event)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // UserId currently logged in
             @event.UserId = userId;
@@ -104,6 +112,8 @@ namespace Eventchain.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", @event.UserId);
+            ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueId", @event.Venues);
+
             return View(@event);
         }
 
@@ -128,7 +138,7 @@ namespace Eventchain.Controllers
             {
                 return View("PrivacyError");
             }
-
+            ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueId", @event.Venues);
             return View(@event);
         }
 
@@ -137,7 +147,7 @@ namespace Eventchain.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDetails,UserId")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDetails,UserId,VenueId")] Event @event)
         {
             if (id != @event.EventId)
             {
@@ -165,6 +175,7 @@ namespace Eventchain.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", @event.UserId);
+            ViewData["VenueId"] = new SelectList(_context.Venues, "VenueId", "VenueId", @event.Venues);
             return View(@event);
         }
 
