@@ -10,7 +10,7 @@ namespace Eventchain.Models
 {
     public class Event
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EventId { get; set; }
         public string EventName { get; set; }
         public string EventDetails { get; set; }
@@ -22,5 +22,8 @@ namespace Eventchain.Models
         //For many to many relationships in objects -> List of each other in both - Events can have many venues, An venue can host many events
         public List<Venue> Venues { get; set; }
 
+        
+        
+        public EventInfo Information { get; set; }
     }
 }

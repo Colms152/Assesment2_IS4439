@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Eventchain.Data.Migrations
+namespace Eventchain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210104150609_newtest3")]
-    partial class newtest3
+    [Migration("20210105111258_2")]
+    partial class _2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -110,9 +110,7 @@ namespace Eventchain.Data.Migrations
             modelBuilder.Entity("Eventchain.Models.Event", b =>
                 {
                     b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("EventDetails")
                         .HasColumnType("nvarchar(max)");
@@ -130,9 +128,9 @@ namespace Eventchain.Data.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("Eventchain.Models.Ticket", b =>
+            modelBuilder.Entity("Eventchain.Models.EventInfo", b =>
                 {
-                    b.Property<int>("TicketId")
+                    b.Property<int>("EventInfoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -140,14 +138,18 @@ namespace Eventchain.Data.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TicketId");
+                    b.Property<bool>("Recurring")
+                        .HasColumnType("bit");
 
-                    b.HasIndex("EventId");
+                    b.HasKey("EventInfoId");
 
-                    b.ToTable("Tickets");
+                    b.HasIndex("EventId")
+                        .IsUnique();
+
+                    b.ToTable("EventInfo");
                 });
 
             modelBuilder.Entity("Eventchain.Models.Venue", b =>
@@ -327,15 +329,15 @@ namespace Eventchain.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Eventchain.Models.Ticket", b =>
+            modelBuilder.Entity("Eventchain.Models.EventInfo", b =>
                 {
-                    b.HasOne("Eventchain.Models.Event", "Event")
-                        .WithMany("Tickets")
-                        .HasForeignKey("EventId")
+                    b.HasOne("Eventchain.Models.Event", "Parent")
+                        .WithOne("Information")
+                        .HasForeignKey("Eventchain.Models.EventInfo", "EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Event");
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -391,7 +393,7 @@ namespace Eventchain.Data.Migrations
 
             modelBuilder.Entity("Eventchain.Models.Event", b =>
                 {
-                    b.Navigation("Tickets");
+                    b.Navigation("Information");
                 });
 #pragma warning restore 612, 618
         }

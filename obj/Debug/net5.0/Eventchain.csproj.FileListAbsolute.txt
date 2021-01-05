@@ -229,3 +229,8 @@ C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Venues\Details.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Venues\Edit.cshtml.g.cs
 C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\Venues\Index.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\EventInfoes\Create.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\EventInfoes\Delete.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\EventInfoes\Details.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\EventInfoes\Edit.cshtml.g.cs
+C:\Users\Colm Sheehan\Desktop\Y4S1WebDev\CA2_IS4439\Eventchain\obj\Debug\net5.0\Razor\Views\EventInfoes\Index.cshtml.g.cs

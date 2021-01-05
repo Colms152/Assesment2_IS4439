@@ -7,27 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eventchain.Data;
 using Eventchain.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Eventchain.Controllers
 {
-    [Authorize]
-    public class VenuesController : Controller
+    public class EventInfoesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public VenuesController(ApplicationDbContext context)
+        public EventInfoesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Venues
+        // GET: EventInfoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Venues.ToListAsync());
+            var applicationDbContext = _context.EventInfo.Include(e => e.Parent);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Venues/Details/5
+        // GET: EventInfoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +34,42 @@ namespace Eventchain.Controllers
                 return NotFound();
             }
 
-            var venue = await _context.Venues
-                .FirstOrDefaultAsync(m => m.VenueId == id);
-            if (venue == null)
+            var eventInfo = await _context.EventInfo
+                .Include(e => e.Parent)
+                .FirstOrDefaultAsync(m => m.EventInfoId == id);
+            if (eventInfo == null)
             {
                 return NotFound();
             }
 
-            return View(venue);
+            return View(eventInfo);
         }
 
-        // GET: Venues/Create
+        // GET: EventInfoes/Create
         public IActionResult Create()
         {
+            ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId");
             return View();
         }
 
-        // POST: Venues/Create
+        // POST: EventInfoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VenueId,Address,Capcity")] Venue venue)
+        public async Task<IActionResult> Create([Bind("EventInfoId,Genre,Recurring,EventId")] EventInfo eventInfo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(venue);
+                _context.Add(eventInfo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(venue);
+            ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId", eventInfo.EventId);
+            return View(eventInfo);
         }
 
-        // GET: Venues/Edit/5
+        // GET: EventInfoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +77,23 @@ namespace Eventchain.Controllers
                 return NotFound();
             }
 
-            var venue = await _context.Venues.FindAsync(id);
-            if (venue == null)
+            var eventInfo = await _context.EventInfo.FindAsync(id);
+            if (eventInfo == null)
             {
                 return NotFound();
             }
-            return View(venue);
+            ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId", eventInfo.EventId);
+            return View(eventInfo);
         }
 
-        // POST: Venues/Edit/5
+        // POST: EventInfoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VenueId,Address,Capcity")] Venue venue)
+        public async Task<IActionResult> Edit(int id, [Bind("EventInfoId,Genre,Recurring,EventId")] EventInfo eventInfo)
         {
-            if (id != venue.VenueId)
+            if (id != eventInfo.EventInfoId)
             {
                 return NotFound();
             }
@@ -99,12 +102,12 @@ namespace Eventchain.Controllers
             {
                 try
                 {
-                    _context.Update(venue);
+                    _context.Update(eventInfo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VenueExists(venue.VenueId))
+                    if (!EventInfoExists(eventInfo.EventInfoId))
                     {
                         return NotFound();
                     }
@@ -115,10 +118,11 @@ namespace Eventchain.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(venue);
+            ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId", eventInfo.EventId);
+            return View(eventInfo);
         }
 
-        // GET: Venues/Delete/5
+        // GET: EventInfoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +130,31 @@ namespace Eventchain.Controllers
                 return NotFound();
             }
 
-            var venue = await _context.Venues
-                .FirstOrDefaultAsync(m => m.VenueId == id);
-            if (venue == null)
+            var eventInfo = await _context.EventInfo
+                .Include(e => e.Parent)
+                .FirstOrDefaultAsync(m => m.EventInfoId == id);
+            if (eventInfo == null)
             {
                 return NotFound();
             }
 
-            return View(venue);
+            return View(eventInfo);
         }
 
-        // POST: Venues/Delete/5
+        // POST: EventInfoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var venue = await _context.Venues.FindAsync(id);
-            _context.Venues.Remove(venue);
+            var eventInfo = await _context.EventInfo.FindAsync(id);
+            _context.EventInfo.Remove(eventInfo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VenueExists(int id)
+        private bool EventInfoExists(int id)
         {
-            return _context.Venues.Any(e => e.VenueId == id);
+            return _context.EventInfo.Any(e => e.EventInfoId == id);
         }
     }
 }

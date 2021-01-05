@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Eventchain.Data.Migrations
+namespace Eventchain.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -108,9 +108,7 @@ namespace Eventchain.Data.Migrations
             modelBuilder.Entity("Eventchain.Models.Event", b =>
                 {
                     b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("EventDetails")
                         .HasColumnType("nvarchar(max)");
@@ -126,6 +124,30 @@ namespace Eventchain.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Eventchain.Models.EventInfo", b =>
+                {
+                    b.Property<int>("EventInfoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Genre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Recurring")
+                        .HasColumnType("bit");
+
+                    b.HasKey("EventInfoId");
+
+                    b.HasIndex("EventId")
+                        .IsUnique();
+
+                    b.ToTable("EventInfo");
                 });
 
             modelBuilder.Entity("Eventchain.Models.Venue", b =>
@@ -305,6 +327,17 @@ namespace Eventchain.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Eventchain.Models.EventInfo", b =>
+                {
+                    b.HasOne("Eventchain.Models.Event", "Parent")
+                        .WithOne("Information")
+                        .HasForeignKey("Eventchain.Models.EventInfo", "EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parent");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -354,6 +387,11 @@ namespace Eventchain.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Eventchain.Models.Event", b =>
+                {
+                    b.Navigation("Information");
                 });
 #pragma warning restore 612, 618
         }

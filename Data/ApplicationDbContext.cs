@@ -17,6 +17,8 @@ namespace Eventchain.Data
         {
         }
 
+        public DbSet<Eventchain.Models.EventInfo> EventInfo { get; set; }
+
         
     }
 }

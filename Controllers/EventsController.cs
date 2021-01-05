@@ -101,7 +101,7 @@ namespace Eventchain.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventId,EventName,EventDetails,VenueId")] Event @event)
+        public async Task<IActionResult> Create([Bind("EventId,EventName,EventDetails,VenueIds")] Event @event)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // UserId currently logged in
             @event.UserId = userId;
@@ -147,7 +147,7 @@ namespace Eventchain.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDetails,UserId,Venues")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventName,EventDetails,UserId,VenueIds")] Event @event)
         {
             if (id != @event.EventId)
             {
