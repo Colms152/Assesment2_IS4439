@@ -3,54 +3,55 @@
 @{
     ViewData["Title"] = "Details";
 }
+<section class="content2 cid-sktwZufd8X" id="content2-s">
+    <h1>Details</h1>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EventName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EventName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EventDetails)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EventDetails)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Venues)
-        </dt>
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Venue(s)</th>
-                    
-                </tr>
-                @foreach (var item in Model.Venues)
-                {
+    <div>
+        <h4>Event</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EventName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EventName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EventDetails)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EventDetails)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Venues)
+            </dt>
+            <dd class="col-sm-10">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        
+                        <th>Venue(s)</th>
+
                     </tr>
-                }
-            </table>
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+                    @foreach (var item in Model.Venues)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+
+                        </tr>
+                    }
+                </table>
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    </section>
