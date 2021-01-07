@@ -12,6 +12,6 @@ namespace Eventchain.Models
         public bool Recurring { get; set; }
         public int EventId { get; set; }
         public Event Parent { get; set; }
-
+        
     }
 }

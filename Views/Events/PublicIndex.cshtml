@@ -1,47 +1,40 @@
 ﻿@model IEnumerable<Eventchain.Models.Event>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Events";
 }
 
-<h1>Index</h1>
+<section class="content2 cid-sktwZufd8X" id="content2-s">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EventName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EventDetails)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.UserName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventDetails)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                
-                <a asp-action="PublicDetails" asp-route-id="@item.EventId">Details</a> |
-                
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Events&nbsp;</strong></h4>
+            <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-5">Find great event's and their availability below!&nbsp;</h5>
+        </div>
+        <div class="row mt-4">
+            @foreach (var item in Model)
+            {
+                <div class="item features-image сol-12 col-md-6 col-lg-4">
+                    <div class="item-wrapper">
+                        <div class="item-img">
+                            <img src="~/assets/images/@Html.DisplayFor(modelItem => item.EventId) .jpg" alt="" title="">
+                        </div>
+                        <div class="item-content">
+                            <h5 class="item-title mbr-fonts-style display-5">@Html.DisplayFor(modelItem => item.EventName)</h5>
+
+                            <p class="mbr-text mbr-fonts-style mt-3 display-7">@Html.DisplayFor(modelItem => item.EventDetails)</p>
+                        </div>
+                        
+                        <div class="mbr-section-btn item-footer mt-2"><a class="btn item-btn btn-primary display-7" asp-action="PublicDetails" asp-route-id="@item.EventId">Learn More</a></div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+
+

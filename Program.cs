@@ -31,7 +31,7 @@ namespace Eventchain
                     logger.LogError(ex, "An error occurred creating the DB.");
                 }
             }
-            host.Run();
+            host.Run(); 
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

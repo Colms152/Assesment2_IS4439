@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eventchain.Data;
 using Eventchain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Eventchain.Controllers
 {
+    [Authorize]
     public class EventInfoesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,7 +25,10 @@ namespace Eventchain.Controllers
         // GET: EventInfoes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.EventInfo.Include(e => e.Parent);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // UserId currently logged in
+
+
+            var applicationDbContext = _context.EventInfo.Where(s => s.Parent.UserId == userId).Include(e => e.Parent);
             return View(await applicationDbContext.ToListAsync());
         }
 
